@@ -240,6 +240,23 @@
             border-bottom: 1px solid rgba(230, 160, 23, 0.2);
         }
         
+        /* Scroll padding para que el header fijo no tape las secciones */
+        html {
+            scroll-padding-top: 120px;
+        }
+        
+        @media (max-width: 700px) {
+            html {
+                scroll-padding-top: 150px;
+            }
+        }
+        
+        @media (max-width: 550px) {
+            html {
+                scroll-padding-top: 160px;
+            }
+        }
+        
         .section-title {
             font-family: 'Montserrat', sans-serif;
             font-size: clamp(1.5rem, 6vw, 2.5rem);
@@ -779,13 +796,21 @@
         setTimeout(() => toast.remove(), 3000);
     }
     
+    // Smooth scroll CORREGIDO - calcula la altura del header automáticamente
     document.querySelectorAll('.nav-links a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href').substring(1);
             const targetElement = document.getElementById(targetId);
             if(targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = targetPosition - headerHeight - 10;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
             }
         });
     });
