@@ -35,6 +35,7 @@
             background-size: cover;
             background-position: center;
         }
+        
         /* Overlay más claro para que se vea mejor la imagen de fondo */
         .overlay-dark {
             position: fixed;
@@ -42,7 +43,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.65);  /* Antes era 0.85, ahora más claro */
+            background: rgba(0, 0, 0, 0.65);
             z-index: -1;
         }
 
@@ -75,7 +76,7 @@
             padding: 1rem 0;
         }
         
-        /* Primera fila del header: logo + nombre a la izquierda, Instagram a la derecha */
+        /* Primera fila del header */
         .header-top {
             display: flex;
             justify-content: space-between;
@@ -85,21 +86,23 @@
             margin-bottom: 1rem;
         }
         
-        /* Grupo logo + nombre (izquierda) */
+        /* Grupo logo + nombre */
         .logo-group {
             display: flex;
             align-items: center;
             gap: 1rem;
             flex-wrap: wrap;
         }
+        
         .logo-grande {
             max-height: 80px;
             width: auto;
             display: block;
         }
+        
         .nombre-gimnasio h1 {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.8rem;
+            font-size: clamp(1.2rem, 5vw, 1.8rem);
             font-weight: 800;
             letter-spacing: -0.5px;
             background: linear-gradient(135deg, #fff, var(--acento));
@@ -108,13 +111,14 @@
             color: transparent;
             line-height: 1.2;
         }
+        
         .nombre-gimnasio p {
-            font-size: 0.7rem;
+            font-size: clamp(0.6rem, 3vw, 0.8rem);
             color: var(--acento);
             letter-spacing: 1px;
         }
         
-        /* Botón Instagram (derecha) */
+        /* Botón Instagram */
         .instagram-link {
             background: linear-gradient(135deg, #f09433, #d62976, #962fbf);
             padding: 0.5rem 1.2rem;
@@ -126,20 +130,19 @@
             align-items: center;
             gap: 0.5rem;
             text-decoration: none;
+            font-size: clamp(0.75rem, 3vw, 0.9rem);
         }
+        
         .instagram-link:hover {
             transform: scale(1.02);
             opacity: 0.95;
         }
-        .instagram-link i {
-            font-size: 1.3rem;
-        }
         
-        /* Menú de navegación (debajo) - MÁS GRANDE Y QUE OCUPE TODA LA LÍNEA */
+        /* Menú de navegación - RESPONSIVE OPTIMIZADO */
         .nav-links {
             display: flex;
             justify-content: space-between;
-            gap: 1rem;
+            gap: 0.5rem;
             list-style: none;
             flex-wrap: wrap;
             align-items: center;
@@ -147,20 +150,50 @@
             border-top: 1px solid rgba(230, 160, 23, 0.2);
             width: 100%;
         }
+        
         .nav-links li {
             flex: 1;
             text-align: center;
+            min-width: 0;
         }
+        
         .nav-links a {
             text-decoration: none;
             color: var(--texto);
             font-weight: 700;
             transition: 0.3s;
-            font-size: 1.2rem;
-            padding-bottom: 6px;
+            font-size: clamp(0.7rem, 3vw, 1.1rem);
+            padding: 0.5rem 0.2rem;
             display: inline-block;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
         }
+        
+        /* En móviles, el menú se ajusta mejor */
+        @media (max-width: 700px) {
+            .nav-links {
+                justify-content: center;
+                gap: 0.3rem;
+            }
+            .nav-links li {
+                flex: auto;
+            }
+            .nav-links a {
+                white-space: normal;
+                font-size: 0.7rem;
+                padding: 0.3rem 0.2rem;
+            }
+        }
+        
+        @media (max-width: 550px) {
+            .nav-links a {
+                font-size: 0.65rem;
+            }
+            .container {
+                padding: 0 1rem;
+            }
+        }
+        
         .nav-links a:hover {
             color: var(--acento);
             border-bottom: 3px solid var(--acento);
@@ -173,36 +206,49 @@
             right: 30px;
             background: #25D366;
             color: white;
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 1.8rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             transition: 0.3s;
             z-index: 99;
             text-decoration: none;
         }
+        
+        @media (max-width: 600px) {
+            .btn-whatsapp {
+                width: 48px;
+                height: 48px;
+                font-size: 1.5rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+        
         .btn-whatsapp:hover {
             transform: scale(1.05);
             background: #128C7E;
         }
 
-        /* Secciones */
+        /* Secciones - Espaciado responsive */
         section {
-            padding: 5rem 0;
+            padding: clamp(2rem, 8vw, 5rem) 0;
             border-bottom: 1px solid rgba(230, 160, 23, 0.2);
         }
+        
         .section-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: 2.5rem;
+            font-size: clamp(1.5rem, 6vw, 2.5rem);
             font-weight: 700;
-            margin-bottom: 2rem;
+            margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
             text-align: center;
             color: white;
         }
+        
         .section-title span {
             border-bottom: 4px solid var(--acento);
             display: inline-block;
@@ -212,32 +258,38 @@
         /* Hero */
         .hero {
             text-align: center;
-            padding: 4rem 0 2rem 0;
+            padding: clamp(1.5rem, 6vw, 4rem) 0 clamp(1rem, 4vw, 2rem) 0;
         }
+        
         .hero h1 {
             font-family: 'Montserrat', sans-serif;
-            font-size: 3.5rem;
+            font-size: clamp(1.8rem, 6vw, 3.5rem);
             font-weight: 800;
             margin-bottom: 1rem;
             background: linear-gradient(135deg, #fff, var(--acento));
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
+            line-height: 1.2;
+            padding: 0 1rem;
         }
+        
         .hero p {
-            font-size: 1.2rem;
+            font-size: clamp(0.9rem, 4vw, 1.2rem);
             max-width: 700px;
             margin: 0 auto;
             color: #ccc;
+            padding: 0 1rem;
         }
 
-        /* Clases grid */
+        /* Clases grid - Responsive */
         .clases-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            gap: 1.5rem;
             margin-top: 2rem;
         }
+        
         .clase-card {
             background: var(--gris-oscuro);
             border-radius: 24px;
@@ -245,65 +297,86 @@
             transition: 0.3s;
             border: 1px solid rgba(230, 160, 23, 0.3);
         }
+        
         .clase-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             border-color: var(--acento);
         }
+        
         .clase-img {
             width: 100%;
-            height: 250px;
+            height: clamp(180px, 30vw, 250px);
             object-fit: cover;
         }
+        
         .clase-info {
-            padding: 1.5rem;
+            padding: 1.2rem;
             text-align: center;
         }
+        
         .clase-info h3 {
-            font-size: 1.5rem;
+            font-size: clamp(1.1rem, 4vw, 1.4rem);
             margin-bottom: 0.5rem;
             color: var(--acento);
         }
+        
         .clase-info p {
             color: #aaa;
+            font-size: clamp(0.8rem, 3vw, 0.9rem);
         }
 
         /* Filosofía */
-        .filosofia {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 3rem;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
         .filosofia-texto {
             max-width: 800px;
             margin: 0 auto;
+            padding: 0 1rem;
         }
+        
         .filosofia-texto p {
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 4vw, 1.05rem);
             line-height: 1.7;
             margin-bottom: 1rem;
         }
+        
         .valores-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 2rem;
+            gap: 1rem;
             justify-content: center;
             margin-top: 2rem;
         }
+        
         .valor-card {
             background: var(--gris-oscuro);
-            padding: 1.5rem;
-            border-radius: 24px;
+            padding: 1.2rem;
+            border-radius: 20px;
             text-align: center;
-            width: 200px;
+            min-width: 140px;
+            flex: 1;
+            max-width: 180px;
             border: 1px solid rgba(230,160,23,0.3);
         }
+        
+        @media (max-width: 550px) {
+            .valor-card {
+                min-width: 120px;
+                padding: 0.8rem;
+            }
+            .valor-card i {
+                font-size: 1.8rem;
+            }
+            .valor-card h4 {
+                font-size: 0.9rem;
+            }
+            .valor-card p {
+                font-size: 0.7rem;
+            }
+        }
+        
         .valor-card i {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--acento);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
 
         /* Reserva */
@@ -311,36 +384,42 @@
             max-width: 700px;
             margin: 0 auto;
             background: var(--gris-oscuro);
-            padding: 2rem;
-            border-radius: 32px;
+            padding: clamp(1.2rem, 5vw, 2rem);
+            border-radius: 28px;
             border: 1px solid rgba(230,160,23,0.3);
         }
+        
         .form-group {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
         }
+        
         input, select, textarea {
             width: 100%;
-            padding: 12px 18px;
+            padding: 12px 16px;
             border: 1px solid #333;
             border-radius: 60px;
             font-family: 'Inter', sans-serif;
             background: #1a1a1a;
             color: white;
             transition: 0.2s;
+            font-size: 0.9rem;
         }
+        
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--acento);
         }
+        
         textarea {
-            border-radius: 24px;
+            border-radius: 20px;
             resize: vertical;
         }
+        
         .btn-enviar {
             background: var(--acento);
             color: #1a1a1a;
             border: none;
-            padding: 14px;
+            padding: 12px;
             font-weight: 700;
             border-radius: 60px;
             cursor: pointer;
@@ -348,81 +427,103 @@
             font-size: 1rem;
             transition: 0.2s;
         }
+        
         .btn-enviar:hover {
             background: var(--acento-hover);
             transform: scale(0.98);
         }
 
-        /* Sección Entrenador */
+        /* Sección Entrenador - Responsive */
         .entrenador-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 2rem;
+            gap: 1.5rem;
             align-items: center;
             background: var(--gris-oscuro);
-            border-radius: 32px;
-            padding: 2rem;
+            border-radius: 28px;
+            padding: clamp(1.2rem, 5vw, 2rem);
             border: 1px solid rgba(230,160,23,0.3);
         }
+        
         .entrenador-img {
             flex: 1;
             text-align: center;
+            min-width: 120px;
         }
+        
         .entrenador-img i {
-            font-size: 8rem;
+            font-size: clamp(4rem, 15vw, 7rem);
             color: var(--acento);
         }
+        
         .entrenador-info {
             flex: 2;
         }
+        
         .entrenador-info h3 {
-            font-size: 2rem;
+            font-size: clamp(1.3rem, 5vw, 2rem);
             color: var(--acento);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
+        
         .entrenador-titulo {
-            font-size: 1.1rem;
+            font-size: clamp(0.8rem, 3vw, 1rem);
             color: #aaa;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
+        
         .entrenador-bio {
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-size: clamp(0.8rem, 3vw, 0.95rem);
         }
+        
         .entrenador-stats {
             display: flex;
-            gap: 2rem;
+            gap: 1rem;
             flex-wrap: wrap;
         }
+        
         .stat {
             text-align: center;
+            flex: 1;
+            min-width: 70px;
         }
+        
         .stat .numero {
-            font-size: 1.6rem;
+            font-size: clamp(1rem, 4vw, 1.4rem);
             font-weight: 700;
             color: var(--acento);
         }
+        
+        .stat div:last-child {
+            font-size: clamp(0.65rem, 2.5vw, 0.75rem);
+        }
 
-        /* Localización */
+        /* Localización - Responsive */
         .loc-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 2rem;
+            gap: 1.5rem;
             align-items: center;
         }
+        
         .loc-info {
             flex: 1;
             background: var(--gris-oscuro);
-            padding: 2rem;
-            border-radius: 28px;
+            padding: clamp(1.2rem, 4vw, 2rem);
+            border-radius: 24px;
             border: 1px solid rgba(230,160,23,0.3);
+            font-size: clamp(0.8rem, 3vw, 0.95rem);
         }
+        
         .mapa {
             flex: 1;
-            border-radius: 28px;
+            border-radius: 24px;
             overflow: hidden;
-            height: 350px;
+            height: clamp(200px, 40vw, 300px);
         }
+        
         .mapa iframe {
             width: 100%;
             height: 100%;
@@ -431,48 +532,43 @@
 
         footer {
             text-align: center;
-            padding: 2rem;
+            padding: 1.5rem;
             color: #888;
-            font-size: 0.8rem;
+            font-size: clamp(0.7rem, 3vw, 0.8rem);
         }
-
-        @media (max-width: 880px) {
-            .container {
-                padding: 0 1rem;
+        
+        footer p {
+            margin: 0.2rem 0;
+        }
+        
+        /* Ajustes generales para móviles */
+        @media (max-width: 600px) {
+            .logo-grande {
+                max-height: 50px;
             }
+            
             .header-top {
-                flex-direction: column;
+                justify-content: center;
                 text-align: center;
             }
+            
             .logo-group {
                 justify-content: center;
             }
-            .nav-links {
-                flex-direction: column;
-                gap: 0.8rem;
+            
+            .instagram-link {
+                padding: 0.4rem 1rem;
             }
-            .nav-links li {
-                width: 100%;
-            }
-            .nav-links a {
-                font-size: 1rem;
-            }
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            .section-title {
-                font-size: 2rem;
-            }
-            .clases-grid {
-                grid-template-columns: 1fr;
-            }
+            
             .loc-grid {
                 flex-direction: column;
             }
+            
             .entrenador-grid {
                 flex-direction: column;
                 text-align: center;
             }
+            
             .entrenador-stats {
                 justify-content: center;
             }
@@ -487,7 +583,6 @@
 <!-- Header -->
 <header>
     <div class="container">
-        <!-- Fila superior: Logo + nombre a la izquierda, Instagram a la derecha -->
         <div class="header-top">
             <div class="logo-group">
                 <img class="logo-grande" src="https://i.imgur.com/Sl3qxkM.png" alt="JMtraining Logo">
@@ -501,20 +596,18 @@
             </a>
         </div>
         
-        <!-- Menú de navegación (debajo) - OCUPA TODA LA LÍNEA con texto más grande -->
         <ul class="nav-links">
             <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#clases">Nuestras Clases</a></li>
-            <li><a href="#filosofia">Nuestra Filosofía</a></li>
-            <li><a href="#reserva">Reserva Clase</a></li>
+            <li><a href="#clases">Clases</a></li>
+            <li><a href="#filosofia">Filosofía</a></li>
+            <li><a href="#reserva">Reserva</a></li>
             <li><a href="#entrenador">Entrenador</a></li>
-            <li><a href="#localizacion">Localización</a></li>
+            <li><a href="#localizacion">Ubicación</a></li>
         </ul>
     </div>
 </header>
 
 <main class="container">
-    <!-- Hero Inicio -->
     <section id="inicio">
         <div class="hero">
             <h1>ENTRENA CON PROPÓSITO</h1>
@@ -522,7 +615,6 @@
         </div>
     </section>
 
-    <!-- Nuestras Clases -->
     <section id="clases">
         <h2 class="section-title"><span>💪 NUESTRAS CLASES 💪</span></h2>
         <div class="clases-grid">
@@ -550,7 +642,6 @@
         </div>
     </section>
 
-    <!-- Nuestra Filosofía -->
     <section id="filosofia">
         <h2 class="section-title"><span>🔥 NUESTRA FILOSOFÍA 🔥</span></h2>
         <div class="filosofia">
@@ -567,7 +658,6 @@
         </div>
     </section>
 
-    <!-- Reserva de Clases -->
     <section id="reserva">
         <h2 class="section-title"><span>📅 RESERVA TU CLASE 📅</span></h2>
         <div class="reserva-form">
@@ -595,7 +685,6 @@
         </div>
     </section>
 
-    <!-- Sección Entrenador -->
     <section id="entrenador">
         <h2 class="section-title"><span>👨‍🏫 CONOCE A TU ENTRENADOR 👨‍🏫</span></h2>
         <div class="entrenador-grid">
@@ -607,31 +696,30 @@
                 <div class="entrenador-titulo">Head Coach & Fundador de JMtraining</div>
                 <div class="entrenador-bio">
                     <p>Javier es especialista en Ciencias del Deporte con más de 12 años de experiencia transformando vidas a través del entrenamiento funcional y personalizado. Ex-atleta de alto rendimiento, ha formado a más de 600 clientes, desde principiantes hasta deportistas avanzados.</p>
-                    <p>Su metodología combina técnica, motivación y adaptación a cada persona. Certificado en NASM, entrenamiento funcional y nutrición deportiva. "Cada cuerpo es único, mi misión es ayudarte a encontrar tu mejor versión".</p>
+                    <p>Su metodología combina técnica, motivación y adaptación a cada persona. Certificado en NASM, entrenamiento funcional y nutrición deportiva.</p>
                 </div>
                 <div class="entrenador-stats">
-                    <div class="stat"><div class="numero">12+</div><div>años de experiencia</div></div>
-                    <div class="stat"><div class="numero">600+</div><div>alumnos transformados</div></div>
-                    <div class="stat"><div class="numero">8</div><div>certificaciones internacionales</div></div>
+                    <div class="stat"><div class="numero">12+</div><div>años</div></div>
+                    <div class="stat"><div class="numero">600+</div><div>alumnos</div></div>
+                    <div class="stat"><div class="numero">8</div><div>certificaciones</div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Localización -->
     <section id="localizacion">
         <h2 class="section-title"><span>📍 ¿DÓNDE ESTAMOS? 📍</span></h2>
         <div class="loc-grid">
             <div class="loc-info">
                 <i class="fas fa-dumbbell" style="font-size: 2rem; color: var(--acento); margin-bottom: 1rem; display: inline-block;"></i>
                 <h3>JMtraining</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Carrer de la Dragonera 20, 07014 Palma, Illes Balears</p>
+                <p><i class="fas fa-map-marker-alt"></i> Carrer de la Dragonera 20, 07014 Palma</p>
                 <p><i class="fas fa-phone"></i> <a href="tel:+34636867082" style="color: var(--acento);">636 867 082</a></p>
                 <p><i class="fab fa-instagram"></i> @jmtraining__</p>
-                <div style="margin-top: 1.5rem;">
+                <div style="margin-top: 1rem;">
                     <strong>Horario:</strong><br>
-                    Lunes a Viernes: 07:00 - 22:00<br>
-                    Sábados: 09:00 - 14:00
+                    L-V: 07:00 - 22:00<br>
+                    S: 09:00 - 14:00
                 </div>
             </div>
             <div class="mapa">
@@ -643,14 +731,13 @@
 
 <footer>
     <p>© 2025 JMtraining · Entrenamiento Personal en Palma</p>
-    <p>📍 Carrer de la Dragonera 20 · 636 867 082 · @jmtraining__</p>
+    <p>📍 Carrer de la Dragonera 20 · 636 867 082</p>
 </footer>
 
 <a href="https://wa.me/34636867082" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
 <script>
-    // Función para enviar reserva por WhatsApp
-    window.enviarReserva = function() {
+    function enviarReserva() {
         const nombre = document.getElementById('nombre')?.value.trim();
         const telefono = document.getElementById('telefono')?.value.trim();
         const tipoClase = document.getElementById('tipoClase')?.value;
@@ -663,17 +750,14 @@
         
         let texto = `Hola JMtraining! 👋%0A`;
         texto += `Me llamo *${nombre}* y quiero reservar una clase:%0A`;
-        texto += `🏋️ *Tipo de clase:* ${tipoClase || "No especificado"}%0A`;
+        texto += `🏋️ *Clase:* ${tipoClase || "No especificado"}%0A`;
         if(mensaje) texto += `📝 *Consulta:* ${mensaje}%0A`;
-        texto += `📞 Mi teléfono es: ${telefono}%0A`;
-        texto += `¡Gracias! 💪🔥`;
+        texto += `📞 Mi teléfono: ${telefono}%0A`;
         
         window.open(`https://wa.me/34636867082?text=${texto}`, '_blank');
-        
-        // Limpiar formulario
         document.getElementById('formReserva').reset();
-        mostrarToast("✅ Redirigiendo a WhatsApp... ¡Gracias por tu interés!");
-    };
+        mostrarToast("✅ Redirigiendo a WhatsApp... ¡Gracias!");
+    }
     
     function mostrarToast(msg) {
         let t = document.querySelector('.toast-msg');
@@ -682,19 +766,19 @@
         toast.className = 'toast-msg';
         toast.innerHTML = msg;
         toast.style.position = 'fixed';
-        toast.style.bottom = '100px';
-        toast.style.right = '30px';
+        toast.style.bottom = '90px';
+        toast.style.right = '20px';
         toast.style.background = '#E6A017';
         toast.style.color = '#1a1a1a';
-        toast.style.padding = '12px 20px';
+        toast.style.padding = '10px 18px';
         toast.style.borderRadius = '40px';
         toast.style.zIndex = '999';
         toast.style.fontWeight = 'bold';
+        toast.style.fontSize = '0.8rem';
         document.body.appendChild(toast);
         setTimeout(() => toast.remove(), 3000);
     }
     
-    // Smooth scroll para los enlaces del menú
     document.querySelectorAll('.nav-links a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
