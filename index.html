@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>JMtraining | Entrenamiento Personal en Palma</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            scroll-behavior: smooth;
+        }
+
+        /* Fondo con imagen de gimnasio - MÁS LUMINOSO */
+        .hero-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            object-fit: cover;
+            background-image: url('https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+        /* Overlay más claro para que se vea mejor la imagen de fondo */
+        .overlay-dark {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);  /* Antes era 0.85, ahora más claro */
+            z-index: -1;
+        }
+
+        /* Paleta de colores */
+        :root {
+            --fondo: #0a0a0a;
+            --texto: #e0e0e0;
+            --acento: #E6A017;
+            --acento-hover: #F5B041;
+            --gris-oscuro: #1a1a1a;
+            --gris-claro: #2a2a2a;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(230, 160, 23, 0.3);
+            padding: 1rem 0;
+        }
+        
+        /* Primera fila del header: logo + nombre a la izquierda, Instagram a la derecha */
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Grupo logo + nombre (izquierda) */
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .logo-grande {
+            max-height: 80px;
+            width: auto;
+            display: block;
+        }
+        .nombre-gimnasio h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #fff, var(--acento));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+        .nombre-gimnasio p {
+            font-size: 0.7rem;
+            color: var(--acento);
+            letter-spacing: 1px;
+        }
+        
+        /* Botón Instagram (derecha) */
+        .instagram-link {
+            background: linear-gradient(135deg, #f09433, #d62976, #962fbf);
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            color: white;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+        .instagram-link:hover {
+            transform: scale(1.02);
+            opacity: 0.95;
+        }
+        .instagram-link i {
+            font-size: 1.3rem;
+        }
+        
+        /* Menú de navegación (debajo) - MÁS GRANDE Y QUE OCUPE TODA LA LÍNEA */
+        .nav-links {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            list-style: none;
+            flex-wrap: wrap;
+            align-items: center;
+            padding-top: 0.8rem;
+            border-top: 1px solid rgba(230, 160, 23, 0.2);
+            width: 100%;
+        }
+        .nav-links li {
+            flex: 1;
+            text-align: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--texto);
+            font-weight: 700;
+            transition: 0.3s;
+            font-size: 1.2rem;
+            padding-bottom: 6px;
+            display: inline-block;
+            letter-spacing: 0.5px;
+        }
+        .nav-links a:hover {
+            color: var(--acento);
+            border-bottom: 3px solid var(--acento);
+        }
+
+        /* Botón flotante WhatsApp */
+        .btn-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: 0.3s;
+            z-index: 99;
+            text-decoration: none;
+        }
+        .btn-whatsapp:hover {
+            transform: scale(1.05);
+            background: #128C7E;
+        }
+
+        /* Secciones */
+        section {
+            padding: 5rem 0;
+            border-bottom: 1px solid rgba(230, 160, 23, 0.2);
+        }
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: white;
+        }
+        .section-title span {
+            border-bottom: 4px solid var(--acento);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 4rem 0 2rem 0;
+        }
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, var(--acento));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #ccc;
+        }
+
+        /* Clases grid */
+        .clases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .clase-card {
+            background: var(--gris-oscuro);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: 0.3s;
+            border: 1px solid rgba(230, 160, 23, 0.3);
+        }
+        .clase-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--acento);
+        }
+        .clase-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .clase-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .clase-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--acento);
+        }
+        .clase-info p {
+            color: #aaa;
+        }
+
+        /* Filosofía */
+        .filosofia {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .filosofia-texto {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .filosofia-texto p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .valores-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        .valor-card {
+            background: var(--gris-oscuro);
+            padding: 1.5rem;
+            border-radius: 24px;
+            text-align: center;
+            width: 200px;
+            border: 1px solid rgba(230,160,23,0.3);
+        }
+        .valor-card i {
+            font-size: 2.5rem;
+            color: var(--acento);
+            margin-bottom: 1rem;
+        }
+
+        /* Reserva */
+        .reserva-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--gris-oscuro);
+            padding: 2rem;
+            border-radius: 32px;
+            border: 1px solid rgba(230,160,23,0.3);
+        }
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 18px;
+            border: 1px solid #333;
+            border-radius: 60px;
+            font-family: 'Inter', sans-serif;
+            background: #1a1a1a;
+            color: white;
+            transition: 0.2s;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--acento);
+        }
+        textarea {
+            border-radius: 24px;
+            resize: vertical;
+        }
+        .btn-enviar {
+            background: var(--acento);
+            color: #1a1a1a;
+            border: none;
+            padding: 14px;
+            font-weight: 700;
+            border-radius: 60px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+        .btn-enviar:hover {
+            background: var(--acento-hover);
+            transform: scale(0.98);
+        }
+
+        /* Sección Entrenador */
+        .entrenador-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            background: var(--gris-oscuro);
+            border-radius: 32px;
+            padding: 2rem;
+            border: 1px solid rgba(230,160,23,0.3);
+        }
+        .entrenador-img {
+            flex: 1;
+            text-align: center;
+        }
+        .entrenador-img i {
+            font-size: 8rem;
+            color: var(--acento);
+        }
+        .entrenador-info {
+            flex: 2;
+        }
+        .entrenador-info h3 {
+            font-size: 2rem;
+            color: var(--acento);
+            margin-bottom: 0.5rem;
+        }
+        .entrenador-titulo {
+            font-size: 1.1rem;
+            color: #aaa;
+            margin-bottom: 1rem;
+        }
+        .entrenador-bio {
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        .entrenador-stats {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat .numero {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--acento);
+        }
+
+        /* Localización */
+        .loc-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+        .loc-info {
+            flex: 1;
+            background: var(--gris-oscuro);
+            padding: 2rem;
+            border-radius: 28px;
+            border: 1px solid rgba(230,160,23,0.3);
+        }
+        .mapa {
+            flex: 1;
+            border-radius: 28px;
+            overflow: hidden;
+            height: 350px;
+        }
+        .mapa iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #888;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 880px) {
+            .container {
+                padding: 0 1rem;
+            }
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+            }
+            .logo-group {
+                justify-content: center;
+            }
+            .nav-links {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            .nav-links li {
+                width: 100%;
+            }
+            .nav-links a {
+                font-size: 1rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .clases-grid {
+                grid-template-columns: 1fr;
+            }
+            .loc-grid {
+                flex-direction: column;
+            }
+            .entrenador-grid {
+                flex-direction: column;
+                text-align: center;
+            }
+            .entrenador-stats {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero-bg"></div>
+<div class="overlay-dark"></div>
+
+<!-- Header -->
+<header>
+    <div class="container">
+        <!-- Fila superior: Logo + nombre a la izquierda, Instagram a la derecha -->
+        <div class="header-top">
+            <div class="logo-group">
+                <img class="logo-grande" src="https://i.imgur.com/Sl3qxkM.png" alt="JMtraining Logo">
+                <div class="nombre-gimnasio">
+                    <h1>JM TRAINING</h1>
+                    <p>Personal & Group Training</p>
+                </div>
+            </div>
+            <a href="https://www.instagram.com/jmtraining__/" target="_blank" class="instagram-link">
+                <i class="fab fa-instagram"></i> Síguenos
+            </a>
+        </div>
+        
+        <!-- Menú de navegación (debajo) - OCUPA TODA LA LÍNEA con texto más grande -->
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#clases">Nuestras Clases</a></li>
+            <li><a href="#filosofia">Nuestra Filosofía</a></li>
+            <li><a href="#reserva">Reserva Clase</a></li>
+            <li><a href="#entrenador">Entrenador</a></li>
+            <li><a href="#localizacion">Localización</a></li>
+        </ul>
+    </div>
+</header>
+
+<main class="container">
+    <!-- Hero Inicio -->
+    <section id="inicio">
+        <div class="hero">
+            <h1>ENTRENA CON PROPÓSITO</h1>
+            <p>JMtraining es un centro de entrenamiento en Palma especializado en programas personalizados, clases grupales, dúo y entrenamiento individual. Supera tus límites con nosotros.</p>
+        </div>
+    </section>
+
+    <!-- Nuestras Clases -->
+    <section id="clases">
+        <h2 class="section-title"><span>💪 NUESTRAS CLASES 💪</span></h2>
+        <div class="clases-grid">
+            <div class="clase-card">
+                <img class="clase-img" src="https://i.imgur.com/jL9CB2Z.jpeg" alt="Clase Grupal">
+                <div class="clase-info">
+                    <h3>🏋️‍♂️ GRUPAL</h3>
+                    <p>Entrenamiento en equipo con máxima energía. Ideal para motivarte y mejorar tu rendimiento en grupo.</p>
+                </div>
+            </div>
+            <div class="clase-card">
+                <img class="clase-img" src="https://i.imgur.com/3Afuy9Q.jpeg" alt="Clase Dúo">
+                <div class="clase-info">
+                    <h3>👥 DÚO</h3>
+                    <p>Entrena con tu pareja, amigo o familiar. Trabajo personalizado para dos personas.</p>
+                </div>
+            </div>
+            <div class="clase-card">
+                <img class="clase-img" src="https://i.imgur.com/lGRqvDJ.jpeg" alt="Entrenamiento Individual">
+                <div class="clase-info">
+                    <h3>🎯 INDIVIDUAL</h3>
+                    <p>Programa 100% personalizado con seguimiento constante para alcanzar tus metas más rápido.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuestra Filosofía -->
+    <section id="filosofia">
+        <h2 class="section-title"><span>🔥 NUESTRA FILOSOFÍA 🔥</span></h2>
+        <div class="filosofia">
+            <div class="filosofia-texto">
+                <p>En <strong>JMtraining</strong> creemos que cada persona es única. Por eso, diseñamos programas adaptados a tus objetivos, nivel y estilo de vida. No creemos en las soluciones genéricas; trabajamos contigo para que cada sesión cuente.</p>
+                <p>Nuestro método se basa en la constancia, la técnica y la motivación. Te ayudamos a construir hábitos saludables y a superar tus límites, ya sea que busques perder peso, ganar masa muscular o simplemente sentirte mejor.</p>
+            </div>
+        </div>
+        <div class="valores-grid">
+            <div class="valor-card"><i class="fas fa-heartbeat"></i><h4>Compromiso</h4><p>Contigo y tus metas</p></div>
+            <div class="valor-card"><i class="fas fa-chart-line"></i><h4>Progreso</h4><p>Resultados reales</p></div>
+            <div class="valor-card"><i class="fas fa-users"></i><h4>Comunidad</h4><p>Entrenamos juntos</p></div>
+            <div class="valor-card"><i class="fas fa-brain"></i><h4>Educación</h4><p>Aprende a entrenar</p></div>
+        </div>
+    </section>
+
+    <!-- Reserva de Clases -->
+    <section id="reserva">
+        <h2 class="section-title"><span>📅 RESERVA TU CLASE 📅</span></h2>
+        <div class="reserva-form">
+            <form id="formReserva" onsubmit="event.preventDefault(); enviarReserva();">
+                <div class="form-group">
+                    <input type="text" id="nombre" placeholder="Nombre completo" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="telefono" placeholder="Teléfono" required>
+                </div>
+                <div class="form-group">
+                    <select id="tipoClase">
+                        <option value="">Selecciona tipo de clase</option>
+                        <option value="Grupal">Clase Grupal</option>
+                        <option value="Dúo">Clase Dúo</option>
+                        <option value="Individual">Entrenamiento Individual</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea id="mensaje" rows="3" placeholder="¿Alguna preferencia de horario o consulta?"></textarea>
+                </div>
+                <button type="submit" class="btn-enviar"><i class="fab fa-whatsapp"></i> Reservar por WhatsApp</button>
+            </form>
+            <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem;">O llámanos al <strong>636 867 082</strong></p>
+        </div>
+    </section>
+
+    <!-- Sección Entrenador -->
+    <section id="entrenador">
+        <h2 class="section-title"><span>👨‍🏫 CONOCE A TU ENTRENADOR 👨‍🏫</span></h2>
+        <div class="entrenador-grid">
+            <div class="entrenador-img">
+                <i class="fas fa-chalkboard-user"></i>
+            </div>
+            <div class="entrenador-info">
+                <h3>Javier Moreno</h3>
+                <div class="entrenador-titulo">Head Coach & Fundador de JMtraining</div>
+                <div class="entrenador-bio">
+                    <p>Javier es especialista en Ciencias del Deporte con más de 12 años de experiencia transformando vidas a través del entrenamiento funcional y personalizado. Ex-atleta de alto rendimiento, ha formado a más de 600 clientes, desde principiantes hasta deportistas avanzados.</p>
+                    <p>Su metodología combina técnica, motivación y adaptación a cada persona. Certificado en NASM, entrenamiento funcional y nutrición deportiva. "Cada cuerpo es único, mi misión es ayudarte a encontrar tu mejor versión".</p>
+                </div>
+                <div class="entrenador-stats">
+                    <div class="stat"><div class="numero">12+</div><div>años de experiencia</div></div>
+                    <div class="stat"><div class="numero">600+</div><div>alumnos transformados</div></div>
+                    <div class="stat"><div class="numero">8</div><div>certificaciones internacionales</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Localización -->
+    <section id="localizacion">
+        <h2 class="section-title"><span>📍 ¿DÓNDE ESTAMOS? 📍</span></h2>
+        <div class="loc-grid">
+            <div class="loc-info">
+                <i class="fas fa-dumbbell" style="font-size: 2rem; color: var(--acento); margin-bottom: 1rem; display: inline-block;"></i>
+                <h3>JMtraining</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Carrer de la Dragonera 20, 07014 Palma, Illes Balears</p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+34636867082" style="color: var(--acento);">636 867 082</a></p>
+                <p><i class="fab fa-instagram"></i> @jmtraining__</p>
+                <div style="margin-top: 1.5rem;">
+                    <strong>Horario:</strong><br>
+                    Lunes a Viernes: 07:00 - 22:00<br>
+                    Sábados: 09:00 - 14:00
+                </div>
+            </div>
+            <div class="mapa">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d615.5!2d2.647887!3d39.569801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x129793f0c6e0a2b3%3A0x0!2sCarrer%20de%20la%20Dragonera%2C%2020%2C%2007014%20Palma%2C%20Illes%20Balears!5e0!3m2!1ses!2ses!4v1712345678901!5m2!1ses!2ses" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2025 JMtraining · Entrenamiento Personal en Palma</p>
+    <p>📍 Carrer de la Dragonera 20 · 636 867 082 · @jmtraining__</p>
+</footer>
+
+<a href="https://wa.me/34636867082" class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+    // Función para enviar reserva por WhatsApp
+    window.enviarReserva = function() {
+        const nombre = document.getElementById('nombre')?.value.trim();
+        const telefono = document.getElementById('telefono')?.value.trim();
+        const tipoClase = document.getElementById('tipoClase')?.value;
+        const mensaje = document.getElementById('mensaje')?.value.trim();
+        
+        if(!nombre || !telefono) {
+            alert("❌ Por favor, completa tu nombre y teléfono.");
+            return;
+        }
+        
+        let texto = `Hola JMtraining! 👋%0A`;
+        texto += `Me llamo *${nombre}* y quiero reservar una clase:%0A`;
+        texto += `🏋️ *Tipo de clase:* ${tipoClase || "No especificado"}%0A`;
+        if(mensaje) texto += `📝 *Consulta:* ${mensaje}%0A`;
+        texto += `📞 Mi teléfono es: ${telefono}%0A`;
+        texto += `¡Gracias! 💪🔥`;
+        
+        window.open(`https://wa.me/34636867082?text=${texto}`, '_blank');
+        
+        // Limpiar formulario
+        document.getElementById('formReserva').reset();
+        mostrarToast("✅ Redirigiendo a WhatsApp... ¡Gracias por tu interés!");
+    };
+    
+    function mostrarToast(msg) {
+        let t = document.querySelector('.toast-msg');
+        if(t) t.remove();
+        const toast = document.createElement('div');
+        toast.className = 'toast-msg';
+        toast.innerHTML = msg;
+        toast.style.position = 'fixed';
+        toast.style.bottom = '100px';
+        toast.style.right = '30px';
+        toast.style.background = '#E6A017';
+        toast.style.color = '#1a1a1a';
+        toast.style.padding = '12px 20px';
+        toast.style.borderRadius = '40px';
+        toast.style.zIndex = '999';
+        toast.style.fontWeight = 'bold';
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+    }
+    
+    // Smooth scroll para los enlaces del menú
+    document.querySelectorAll('.nav-links a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if(targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+</script>
+</body>
+</html>
