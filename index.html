@@ -173,7 +173,7 @@ h2.title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,7vw,5.5rem);
 h2.title em{color:var(--gold-light);font-style:normal}
 .subtitle{color:var(--muted);font-weight:300;font-size:0.95rem;line-height:1.6;max-width:480px;margin-bottom:3rem}
 
-/* ── CLASES (ELIGE TU CAMINO) - SIN PRECIOS, CON GRANDES SÍMBOLOS VECTORIALES ── */
+/* ── CLASES (ELIGE TU CAMINO) - FOTOS REALES CON OVERLAY DE MARCA ── */
 .clases-layout{display:grid;grid-template-columns:1fr;gap:1px;background:var(--border)}
 .clase-item{
   display:grid;grid-template-columns:1fr 1fr;
@@ -184,34 +184,45 @@ h2.title em{color:var(--gold-light);font-style:normal}
 .clase-item:nth-child(even){direction:rtl}
 .clase-item:nth-child(even)>*{direction:ltr}
 .clase-icon-area{
-  background:linear-gradient(145deg, #0d0d0d 0%, #050505 100%);
-  display:flex;
-  align-items:center;
-  justify-content:center;
   position:relative;
   overflow:hidden;
-  min-height:420px;
+  min-height:460px;
+  background-size:cover;
+  background-position:center;
+  transition:transform .6s ease;
 }
-.clase-icon-symbol{
-  font-size:10rem;
-  color:rgba(201,146,42,0.2);
-  transition:all 0.4s cubic-bezier(0.2,0.9,0.4,1.1);
-  position:absolute;
-  opacity:0.9;
+.clase-item:hover .clase-icon-area{transform:scale(1.04)}
+.clase-icon-area .photo-shade{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(195deg, rgba(8,8,8,0.15) 0%, rgba(8,8,8,0.55) 55%, rgba(8,8,8,0.96) 100%);
 }
-.clase-item:hover .clase-icon-symbol{
-  transform:scale(1.08);
-  color:rgba(201,146,42,0.35);
-  text-shadow:0 0 20px rgba(201,146,42,0.2);
+.clase-icon-area .photo-tint{
+  position:absolute;inset:0;z-index:1;
+  background:rgba(201,146,42,0.32);
+  mix-blend-mode:color;
 }
-.clase-icon-bg-pattern{
-  position:absolute;
-  width:100%;
-  height:100%;
-  background-image: radial-gradient(var(--border) 1px, transparent 1px);
-  background-size: 28px 28px;
-  opacity:0.3;
+.clase-big-num{
+  position:absolute;top:1.8rem;left:1.8rem;z-index:2;
+  font-family:'Bebas Neue',sans-serif;font-size:5.5rem;line-height:1;
+  color:rgba(255,255,255,0.16);
+  text-shadow:0 1px 0 rgba(0,0,0,0.4);
 }
+.clase-item:nth-child(even) .clase-big-num{left:auto;right:1.8rem;text-align:right}
+.clase-icon-badge{
+  position:absolute;bottom:1.8rem;left:1.8rem;z-index:2;
+  width:60px;height:60px;border-radius:50%;
+  background:var(--gold);color:var(--black);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;
+  box-shadow:0 8px 24px rgba(0,0,0,0.4);
+}
+.clase-item:nth-child(even) .clase-icon-badge{left:auto;right:1.8rem}
+.clase-icon-caption{
+  position:absolute;bottom:2rem;left:5.6rem;z-index:2;
+  font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gold-pale);
+}
+.clase-item:nth-child(even) .clase-icon-caption{left:auto;right:5.6rem;text-align:right}
 .clase-text{
   padding:3rem;display:flex;flex-direction:column;justify-content:center;
 }
@@ -248,8 +259,12 @@ h2.title em{color:var(--gold-light);font-style:normal}
 @media(max-width:768px){
   .clase-item{grid-template-columns:1fr}
   .clase-item:nth-child(even){direction:ltr}
-  .clase-icon-area{min-height:280px}
-  .clase-icon-symbol{font-size:6rem}
+  .clase-item:nth-child(even) .clase-big-num,
+  .clase-item:nth-child(even) .clase-icon-badge,
+  .clase-item:nth-child(even) .clase-icon-caption{left:1.8rem;right:auto;text-align:left}
+  .clase-item:nth-child(even) .clase-icon-caption{left:5.6rem}
+  .clase-icon-area{min-height:300px}
+  .clase-big-num{font-size:4rem}
   .clase-text{padding:2rem}
 }
 
@@ -468,7 +483,7 @@ footer span{color:var(--gold)}
   </div>
 </div>
 
-<!-- CLASES (ELIGE TU CAMINO) - GRANDES ICONOS/MARCAS VISUALES SIN PRECIOS -->
+<!-- CLASES (ELIGE TU CAMINO) - FOTOS REALES + NÚMERO + BADGE -->
 <section id="clases" class="section">
   <div class="section-inner">
     <div class="label reveal">01 — Nuestras Clases</div>
@@ -476,11 +491,14 @@ footer span{color:var(--gold)}
     <p class="subtitle reveal">Tres modalidades de entrenamiento adaptadas a cada persona, objetivo y ritmo de vida.</p>
   </div>
   <div class="clases-layout reveal">
-    <!-- GRUPAL - Icono grande de equipo / personas -->
+    <!-- GRUPAL -->
     <div class="clase-item">
-      <div class="clase-icon-area">
-        <div class="clase-icon-bg-pattern"></div>
-        <i class="fas fa-users clase-icon-symbol"></i>
+      <div class="clase-icon-area" style="background-image:url('https://themewagon.github.io/training-studio/assets/images/training-image-01.jpg')">
+        <div class="photo-shade"></div>
+        <div class="photo-tint"></div>
+        <div class="clase-big-num">01</div>
+        <div class="clase-icon-badge"><i class="fas fa-users"></i></div>
+        <div class="clase-icon-caption">Grupos reducidos<br>3 – 6 personas</div>
       </div>
       <div class="clase-text">
         <div class="clase-num">01</div>
@@ -494,11 +512,14 @@ footer span{color:var(--gold)}
         <div class="clase-tag"><i class="fas fa-users"></i> 3 – 6 personas</div>
       </div>
     </div>
-    <!-- DÚO - Icono de dos figuras enlazadas -->
+    <!-- DÚO -->
     <div class="clase-item">
-      <div class="clase-icon-area">
-        <div class="clase-icon-bg-pattern"></div>
-        <i class="fas fa-user-friends clase-icon-symbol"></i>
+      <div class="clase-icon-area" style="background-image:url('https://themewagon.github.io/training-studio/assets/images/training-image-02.jpg')">
+        <div class="photo-shade"></div>
+        <div class="photo-tint"></div>
+        <div class="clase-big-num">02</div>
+        <div class="clase-icon-badge"><i class="fas fa-user-friends"></i></div>
+        <div class="clase-icon-caption">Entrena en pareja<br>2 personas</div>
       </div>
       <div class="clase-text">
         <div class="clase-num">02</div>
@@ -512,11 +533,14 @@ footer span{color:var(--gold)}
         <div class="clase-tag"><i class="fas fa-user-friends"></i> 2 personas</div>
       </div>
     </div>
-    <!-- INDIVIDUAL - Icono de diana / objetivo + persona -->
+    <!-- INDIVIDUAL -->
     <div class="clase-item">
-      <div class="clase-icon-area">
-        <div class="clase-icon-bg-pattern"></div>
-        <i class="fas fa-bullseye clase-icon-symbol"></i>
+      <div class="clase-icon-area" style="background-image:url('https://themewagon.github.io/training-studio/assets/images/training-image-03.jpg')">
+        <div class="photo-shade"></div>
+        <div class="photo-tint"></div>
+        <div class="clase-big-num">03</div>
+        <div class="clase-icon-badge"><i class="fas fa-bullseye"></i></div>
+        <div class="clase-icon-caption">100% personalizado<br>1 a 1 con Javier</div>
       </div>
       <div class="clase-text">
         <div class="clase-num">03</div>
