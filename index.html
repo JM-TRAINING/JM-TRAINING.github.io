@@ -407,6 +407,45 @@ footer span{color:var(--gold)}
 /* SCROLL REVEAL */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ── LEGAL · COOKIES · PRIVACIDAD ── */
+.ph{background:rgba(201,146,42,0.25);color:var(--gold-pale);padding:0 4px;border-radius:3px}
+.footer-legal{margin-top:1rem;display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap}
+.footer-legal a{color:var(--muted);text-decoration:none;cursor:pointer;transition:color .2s}
+.footer-legal a:hover{color:var(--gold-light)}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:0.78rem;color:var(--muted);line-height:1.5;font-weight:300}
+.check input{margin-top:3px;accent-color:var(--gold);flex-shrink:0}
+.check a{color:var(--gold);cursor:pointer;text-decoration:underline}
+.form-info{font-size:0.68rem;color:rgba(136,136,136,0.8);line-height:1.5;font-weight:300}
+.mapa-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;text-align:center;padding:1.5rem;background:var(--panel);color:var(--muted);font-size:0.85rem;line-height:1.6;font-weight:300}
+.mapa-placeholder .btn-row{display:flex;gap:0.8rem;flex-wrap:wrap;justify-content:center}
+.mapa-placeholder button,.mapa-placeholder a{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;padding:0.8rem 1.2rem;border-radius:4px;cursor:pointer;text-decoration:none}
+.mapa-placeholder button{background:var(--gold);color:var(--black);border:none;font-weight:700}
+.mapa-placeholder a{border:1px solid var(--border);color:var(--text)}
+.cookie-banner{display:none;position:fixed;left:1rem;bottom:1rem;right:5.5rem;max-width:560px;z-index:400;background:var(--dark);border:1px solid var(--border);border-radius:8px;padding:1.2rem 1.4rem;gap:1rem;flex-direction:column;box-shadow:0 12px 40px rgba(0,0,0,0.6)}
+.cookie-banner.show{display:flex}
+.cookie-banner p{font-size:0.8rem;color:var(--text);line-height:1.55;font-weight:300}
+.cookie-banner a{color:var(--gold);cursor:pointer;text-decoration:underline}
+.cookie-actions{display:flex;gap:0.6rem;flex-wrap:wrap}
+.cookie-actions button{padding:0.7rem 1.2rem;font-size:0.65rem}
+@media(max-width:600px){.cookie-banner{right:1rem}}
+.legal-modal{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,0.8);align-items:center;justify-content:center;padding:1rem}
+.legal-modal.open{display:flex}
+.legal-box{background:var(--dark);border:1px solid var(--border);border-radius:8px;max-width:760px;width:100%;max-height:90vh;overflow-y:auto;padding:2rem;position:relative}
+.legal-close{position:sticky;top:0;float:right;background:var(--panel2);border:1px solid var(--border);color:var(--text);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem}
+.legal-tabs{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1.5rem;padding-right:3rem}
+.legal-tab{background:transparent;border:1px solid var(--border);color:var(--muted);font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;padding:0.6rem 1rem;border-radius:40px;cursor:pointer}
+.legal-tab.active{background:var(--gold);color:var(--black);border-color:var(--gold);font-weight:700}
+.legal-pane{display:none;font-size:0.88rem;line-height:1.7;color:var(--muted);font-weight:300}
+.legal-pane.active{display:block}
+.legal-pane h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:#fff;margin-bottom:0.8rem;letter-spacing:1px}
+.legal-pane h4{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--gold-light);margin:1.2rem 0 0.3rem;letter-spacing:1px}
+.legal-pane p,.legal-pane li{margin-bottom:0.6rem}
+.legal-pane ul{padding-left:1.2rem}
+.legal-pane strong{color:var(--text);font-weight:500}
+.legal-pane table{width:100%;border-collapse:collapse;font-size:0.8rem;margin:0.6rem 0}
+.legal-pane th,.legal-pane td{border:1px solid var(--border);padding:0.5rem 0.6rem;text-align:left;vertical-align:top}
+.legal-pane th{color:var(--gold-light);font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:1px;text-transform:uppercase}
 </style>
 </head>
 <body>
@@ -579,19 +618,105 @@ footer span{color:var(--gold)}
 <section id="entrenador" class="section"><div class="section-inner"><div class="label reveal">04 — Tu Entrenador</div><div class="trainer-grid reveal"><div class="trainer-photo"><i class="fas fa-chalkboard-user"></i></div><div><h2 class="trainer-name">JOAN</h2><div class="trainer-role">Head Coach &amp; Fundador · JMtraining</div><p class="trainer-bio">Especialista en Ciencias del Deporte con más de 12 años transformando vidas a través del entrenamiento funcional y personalizado. Ex-atleta de alto rendimiento, ha formado a más de 600 clientes, desde principiantes hasta deportistas avanzados.<br><br>Su metodología combina técnica, motivación y adaptación individual. Certificado en NASM, entrenamiento funcional y nutrición deportiva.</p><div class="trainer-stats"><div class="ts"><div class="n">12+</div><div class="l">Años exp.</div></div><div class="ts"><div class="n">600+</div><div class="l">Alumnos</div></div><div class="ts"><div class="n">8</div><div class="l">Certificados</div></div></div></div></div></div>
 </section>
 <div class="gold-line"></div>
-<section id="reserva" class="section reserva-bg"><div class="section-inner"><div class="label reveal">05 — Reserva</div><h2 class="title reveal">EMPIEZA<br><em>HOY</em></h2><div class="reserva-layout"><div class="reserva-aside reveal"><h3>¿Listo para el cambio?</h3><p>Rellena el formulario y te contactamos para encontrar el horario que mejor se adapta a ti. Primera consulta sin compromiso.</p><div class="contact-lines"><div class="contact-line"><i class="fas fa-phone"></i><span><a href="tel:+34636867082">636 867 082</a></span></div><div class="contact-line"><i class="fab fa-instagram"></i><span><a href="https://instagram.com/jmtraining__" target="_blank">@jmtraining__</a></span></div><div class="contact-line"><i class="fas fa-clock"></i><span>L-V: 07:00–22:00 · S: 09:00–14:00</span></div><div class="contact-line"><i class="fas fa-map-marker-alt"></i><span>Carrer de la Dragonera 20, 07014 Palma</span></div></div></div><form id="formReserva" class="reveal" onsubmit="enviarReserva(event)"><div class="form-row"><div class="field"><label>Nombre</label><input type="text" id="nombre" placeholder="Tu nombre completo" required></div><div class="field"><label>Teléfono</label><input type="tel" id="telefono" placeholder="+34 600 000 000" required></div></div><div class="field"><label>Tipo de clase</label><select id="tipoClase"><option value="">Selecciona una opción</option><option value="Grupal">Clase Grupal</option><option value="Dúo">Clase Dúo</option><option value="Individual">Entrenamiento Individual</option></select></div><div class="field"><label>Mensaje (opcional)</label><textarea id="mensaje" placeholder="Horario preferido, objetivos, dudas…"></textarea></div><button type="submit" class="btn-submit"><i class="fab fa-whatsapp"></i> Reservar por WhatsApp</button></form></div></div>
+<section id="reserva" class="section reserva-bg"><div class="section-inner"><div class="label reveal">05 — Reserva</div><h2 class="title reveal">EMPIEZA<br><em>HOY</em></h2><div class="reserva-layout"><div class="reserva-aside reveal"><h3>¿Listo para el cambio?</h3><p>Rellena el formulario y te contactamos para encontrar el horario que mejor se adapta a ti. Primera consulta sin compromiso.</p><div class="contact-lines"><div class="contact-line"><i class="fas fa-phone"></i><span><a href="tel:+34636867082">636 867 082</a></span></div><div class="contact-line"><i class="fab fa-instagram"></i><span><a href="https://instagram.com/jmtraining__" target="_blank">@jmtraining__</a></span></div><div class="contact-line"><i class="fas fa-clock"></i><span>L-V: 07:00–22:00 · S: 09:00–14:00</span></div><div class="contact-line"><i class="fas fa-map-marker-alt"></i><span>Carrer de la Dragonera 20, 07014 Palma</span></div></div></div><form id="formReserva" class="reveal" onsubmit="enviarReserva(event)"><div class="form-row"><div class="field"><label>Nombre</label><input type="text" id="nombre" placeholder="Tu nombre completo" required></div><div class="field"><label>Teléfono</label><input type="tel" id="telefono" placeholder="+34 600 000 000" required></div></div><div class="field"><label>Tipo de clase</label><select id="tipoClase"><option value="">Selecciona una opción</option><option value="Grupal">Clase Grupal</option><option value="Dúo">Clase Dúo</option><option value="Individual">Entrenamiento Individual</option></select></div><div class="field"><label>Mensaje (opcional)</label><textarea id="mensaje" placeholder="Horario preferido, objetivos, dudas…"></textarea></div><label class="check"><input type="checkbox" id="privacidad" required><span>He leído y acepto la <a onclick="openLegal('privacidad')">política de privacidad</a>.</span></label><p class="form-info"><strong>Responsable:</strong> JMtraining. <strong>Finalidad:</strong> atender tu consulta o reserva. <strong>Envío:</strong> al pulsar el botón se abre WhatsApp con tu mensaje; esta web no guarda los datos del formulario. <strong>Derechos:</strong> acceso, rectificación, supresión y otros, escribiendo a <span class="ph">[EMAIL DE CONTACTO]</span>.</p><button type="submit" class="btn-submit"><i class="fab fa-whatsapp"></i> Reservar por WhatsApp</button></form></div></div>
 </section>
 <div class="gold-line"></div>
-<section id="localizacion" class="section"><div class="section-inner"><div class="label reveal">06 — Ubicación</div><h2 class="title reveal">DÓNDE<br><em>ESTAMOS</em></h2><div class="ubi-grid reveal"><div class="ubi-info"><div class="ubi-block"><h3>JMtraining</h3><p>Carrer de la Dragonera 20<br>07014 Palma, Illes Balears</p></div><div class="ubi-block"><h3>Contacto</h3><p><a href="tel:+34636867082">636 867 082</a><br><a href="https://instagram.com/jmtraining__" target="_blank">@jmtraining__</a></p></div><div class="ubi-block"><h3>Horario</h3><div class="horario-grid"><span class="day">Lun – Vie</span><span class="hrs">07:00 – 22:00</span><span class="day">Sábado</span><span class="hrs">09:00 – 14:00</span><span class="day">Domingo</span><span class="hrs">Cerrado</span></div></div><a href="https://wa.me/34636867082" class="btn-primary" target="_blank" style="width:fit-content"><i class="fab fa-whatsapp"></i> Escríbenos</a></div><div class="mapa-wrap"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d615.5!2d2.647887!3d39.569801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x129793f0c6e0a2b3%3A0x0!2sCarrer%20de%20la%20Dragonera%2C%2020%2C%2007014%20Palma%2C%20Illes%20Balears!5e0!3m2!1ses!2ses!4v1712345678901!5m2!1ses!2ses" allowfullscreen loading="lazy"></iframe></div></div></div>
+<section id="localizacion" class="section"><div class="section-inner"><div class="label reveal">06 — Ubicación</div><h2 class="title reveal">DÓNDE<br><em>ESTAMOS</em></h2><div class="ubi-grid reveal"><div class="ubi-info"><div class="ubi-block"><h3>JMtraining</h3><p>Carrer de la Dragonera 20<br>07014 Palma, Illes Balears</p></div><div class="ubi-block"><h3>Contacto</h3><p><a href="tel:+34636867082">636 867 082</a><br><a href="https://instagram.com/jmtraining__" target="_blank">@jmtraining__</a></p></div><div class="ubi-block"><h3>Horario</h3><div class="horario-grid"><span class="day">Lun – Vie</span><span class="hrs">07:00 – 22:00</span><span class="day">Sábado</span><span class="hrs">09:00 – 14:00</span><span class="day">Domingo</span><span class="hrs">Cerrado</span></div></div><a href="https://wa.me/34636867082" class="btn-primary" target="_blank" style="width:fit-content"><i class="fab fa-whatsapp"></i> Escríbenos</a></div><div class="mapa-wrap" id="mapaWrap"><div class="mapa-placeholder" id="mapaPlaceholder"><p>El mapa lo proporciona Google y puede instalar cookies. Se carga solo si lo aceptas.</p><div class="btn-row"><button type="button" onclick="loadMap()">Cargar mapa</button><a href="https://www.google.com/maps/search/?api=1&query=Carrer+de+la+Dragonera+20+07014+Palma" target="_blank" rel="noopener">Abrir en Google Maps</a></div></div><iframe id="mapaFrame" style="display:none" referrerpolicy="no-referrer-when-downgrade" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d615.5!2d2.647887!3d39.569801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x129793f0c6e0a2b3%3A0x0!2sCarrer%20de%20la%20Dragonera%2C%2020%2C%2007014%20Palma%2C%20Illes%20Balears!5e0!3m2!1ses!2ses!4v1712345678901!5m2!1ses!2ses" allowfullscreen loading="lazy"></iframe></div></div></div>
 </section>
-<footer><p>© 2025 <span>JMtraining</span> · Entrenamiento Personal en Palma · Carrer de la Dragonera 20 · <a href="tel:+34636867082" style="color:var(--gold);text-decoration:none">636 867 082</a></p></footer>
+<footer><p>© 2025 <span>JMtraining</span> · Entrenamiento Personal en Palma · Carrer de la Dragonera 20 · <a href="tel:+34636867082" style="color:var(--gold);text-decoration:none">636 867 082</a></p><p class="footer-legal"><a onclick="openLegal('aviso')">Aviso legal</a><a onclick="openLegal('privacidad')">Privacidad</a><a onclick="openLegal('cookies')">Cookies</a><a onclick="resetConsent()">Configurar cookies</a></p></footer>
 <a href="https://wa.me/34636867082" class="fab-wa" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<!-- BANNER DE COOKIES -->
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Aviso de cookies">
+  <p>Usamos recursos de terceros, como Google Maps, que pueden instalar cookies. Puedes aceptarlos o rechazarlos: el mapa solo se carga si lo aceptas. <a onclick="openLegal('cookies')">Más información</a></p>
+  <div class="cookie-actions">
+    <button type="button" class="btn-outline" onclick="setConsent('necessary')">Rechazar</button>
+    <button type="button" class="btn-primary" onclick="setConsent('all')">Aceptar</button>
+  </div>
+</div>
+
+<!-- TEXTOS LEGALES -->
+<div class="legal-modal" id="legalModal" role="dialog" aria-modal="true" aria-label="Información legal" onclick="if(event.target===this)closeLegal()">
+  <div class="legal-box">
+    <button type="button" class="legal-close" onclick="closeLegal()" aria-label="Cerrar"><i class="fas fa-xmark"></i></button>
+    <div class="legal-tabs">
+      <button type="button" class="legal-tab" data-t="aviso" onclick="showLegal('aviso')">Aviso legal</button>
+      <button type="button" class="legal-tab" data-t="privacidad" onclick="showLegal('privacidad')">Privacidad</button>
+      <button type="button" class="legal-tab" data-t="cookies" onclick="showLegal('cookies')">Cookies</button>
+    </div>
+
+    <div class="legal-pane" id="legal-aviso">
+      <h3>Aviso legal</h3>
+      <p><strong>Titular del sitio web:</strong> <span class="ph">[NOMBRE Y APELLIDOS O DENOMINACIÓN SOCIAL DEL TITULAR]</span><br>
+      <strong>NIF:</strong> <span class="ph">[NIF/CIF]</span><br>
+      <strong>Domicilio:</strong> Carrer de la Dragonera 20, 07014 Palma, Illes Balears<br>
+      <strong>Teléfono:</strong> 636 867 082<br>
+      <strong>Correo electrónico:</strong> <span class="ph">[EMAIL DE CONTACTO]</span><br>
+      <strong>Actividad:</strong> servicios de entrenamiento personal y clases deportivas.</p>
+      <h4>Objeto</h4>
+      <p>Este sitio web ofrece información sobre los servicios de JMtraining. Este aviso se publica en cumplimiento de la Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE).</p>
+      <h4>Condiciones de uso</h4>
+      <p>El acceso a la web es gratuito. La persona usuaria se compromete a hacer un uso lícito del sitio y a no realizar acciones que puedan dañarlo o impedir su normal funcionamiento.</p>
+      <h4>Propiedad intelectual</h4>
+      <p>Los textos, el diseño y los demás elementos de este sitio pertenecen a su titular o se utilizan con la licencia correspondiente. Queda prohibida su reproducción o distribución sin autorización. Las marcas y logotipos de terceros pertenecen a sus respectivos propietarios.</p>
+      <h4>Información y salud</h4>
+      <p>La información de esta web es orientativa y no sustituye el consejo médico. Si tienes alguna condición de salud, consulta con un profesional sanitario antes de iniciar un programa de ejercicio. Los resultados dependen de cada persona.</p>
+      <h4>Enlaces y responsabilidad</h4>
+      <p>Este sitio puede contener enlaces a webs de terceros (Instagram, WhatsApp, Google Maps). El titular no es responsable de sus contenidos ni de sus políticas de privacidad. Tampoco garantiza la disponibilidad continua del sitio.</p>
+      <h4>Legislación aplicable</h4>
+      <p>Este aviso se rige por la legislación española. Para cualquier controversia, serán competentes los juzgados y tribunales de Palma, sin perjuicio de los derechos que la normativa de consumidores reconozca a la persona usuaria.</p>
+    </div>
+
+    <div class="legal-pane" id="legal-privacidad">
+      <h3>Política de privacidad</h3>
+      <h4>Responsable del tratamiento</h4>
+      <p><span class="ph">[NOMBRE Y APELLIDOS O DENOMINACIÓN SOCIAL DEL TITULAR]</span>, NIF <span class="ph">[NIF/CIF]</span>, con domicilio en Carrer de la Dragonera 20, 07014 Palma. Contacto: <span class="ph">[EMAIL DE CONTACTO]</span>.</p>
+      <h4>Qué datos tratamos y para qué</h4>
+      <p>Si usas el formulario de reserva, tratamos tu nombre, tu teléfono, el tipo de clase y el mensaje que escribas, para atender tu consulta o reserva.</p>
+      <h4>Cómo se envían los datos</h4>
+      <p>Al pulsar «Reservar por WhatsApp», se abre WhatsApp con un mensaje ya preparado con esos datos. Esta web no guarda la información del formulario en ningún servidor propio. El envío del mensaje queda sujeto a las condiciones y la política de privacidad de WhatsApp.</p>
+      <h4>Base jurídica</h4>
+      <p>Tu consentimiento y la aplicación de medidas precontractuales a petición tuya (art. 6.1.a y 6.1.b del RGPD).</p>
+      <h4>Destinatarios</h4>
+      <p>No cedemos tus datos a terceros, salvo obligación legal. WhatsApp (Meta) interviene como canal de comunicación cuando eres tú quien envía el mensaje.</p>
+      <h4>Conservación</h4>
+      <p>Conservamos tus datos mientras dure la gestión de tu consulta o reserva y, después, durante los plazos exigidos por la ley.</p>
+      <h4>Tus derechos</h4>
+      <p>Puedes ejercer los derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad escribiendo a <span class="ph">[EMAIL DE CONTACTO]</span>. Si consideras que no se han respetado, puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).</p>
+      <h4>Menores</h4>
+      <p>Este sitio no está dirigido a menores de 14 años. Si eres menor, consulta antes con tu padre, madre o tutor.</p>
+    </div>
+
+    <div class="legal-pane" id="legal-cookies">
+      <h3>Política de cookies</h3>
+      <p>Las cookies y tecnologías similares son pequeños archivos o datos que se guardan en tu dispositivo al visitar una web. Este sitio usa lo siguiente:</p>
+      <table>
+        <tr><th>Recurso</th><th>Finalidad</th><th>Cuándo</th></tr>
+        <tr><td>Preferencia de cookies (almacenamiento local, propio)</td><td>Recordar tu elección sobre cookies</td><td>Siempre (técnico)</td></tr>
+        <tr><td>Google Maps (Google)</td><td>Mostrar el mapa de ubicación; Google puede instalar sus propias cookies</td><td>Solo si aceptas o pulsas «Cargar mapa»</td></tr>
+        <tr><td>Tipografías (Google Fonts) e iconos (Font Awesome, mediante cdnjs/Cloudflare)</td><td>Mostrar el diseño del sitio; el servidor del proveedor puede recibir tu dirección IP al cargarlos</td><td>Al cargar la página</td></tr>
+        <tr><td>Imágenes alojadas en servicios externos</td><td>Mostrar fotografías y el logotipo</td><td>Al cargar la página</td></tr>
+      </table>
+      <h4>Cómo cambiar tu elección</h4>
+      <p>Puedes cambiarla en cualquier momento con el enlace «Configurar cookies» del pie de página, o borrando los datos del sitio en tu navegador.</p>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 <script>
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
 function closeMenu(){document.getElementById('mobileMenu').classList.remove('open');}
 function enviarReserva(e){e.preventDefault();const nombre=document.getElementById('nombre').value.trim();const tel=document.getElementById('telefono').value.trim();const tipo=document.getElementById('tipoClase').value;const msg=document.getElementById('mensaje').value.trim();if(!nombre||!tel){showToast('Completa tu nombre y teléfono');return;}let txt=`Hola JMtraining! 👋%0AMe llamo *${nombre}* y quiero reservar una clase:%0A🏋️ *Clase:* ${tipo||'No especificado'}%0A`;if(msg)txt+=`📝 *Consulta:* ${msg}%0A`;txt+=`📞 Mi teléfono: ${tel}`;window.open(`https://wa.me/34636867082?text=${txt}`,'_blank');document.getElementById('formReserva').reset();showToast('✓ Redirigiendo a WhatsApp…');}
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200);}
+function getConsent(){try{return localStorage.getItem('jm_cookie_consent')}catch(e){return null}}
+function loadMap(){const f=document.getElementById('mapaFrame');const p=document.getElementById('mapaPlaceholder');if(f&&!f.getAttribute('src')){f.setAttribute('src',f.dataset.src);}if(f)f.style.display='block';if(p)p.style.display='none';}
+function setConsent(v){try{localStorage.setItem('jm_cookie_consent',v)}catch(e){}document.getElementById('cookieBanner').classList.remove('show');if(v==='all')loadMap();}
+function resetConsent(){try{localStorage.removeItem('jm_cookie_consent')}catch(e){}const f=document.getElementById('mapaFrame');const p=document.getElementById('mapaPlaceholder');if(f){f.removeAttribute('src');f.style.display='none';}if(p)p.style.display='flex';document.getElementById('cookieBanner').classList.add('show');}
+function showLegal(id){document.querySelectorAll('.legal-pane').forEach(p=>p.classList.toggle('active',p.id==='legal-'+id));document.querySelectorAll('.legal-tab').forEach(t=>t.classList.toggle('active',t.dataset.t===id));document.querySelector('.legal-box').scrollTop=0;}
+function openLegal(id){document.getElementById('legalModal').classList.add('open');document.body.style.overflow='hidden';showLegal(id);}
+function closeLegal(){document.getElementById('legalModal').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLegal();});
+(function(){const c=getConsent();if(c==='all')loadMap();else if(!c)document.getElementById('cookieBanner').classList.add('show');})();
 const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}});},{threshold:0.12});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 </script>
 </body>
